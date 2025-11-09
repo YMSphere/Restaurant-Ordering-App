@@ -1,0 +1,202 @@
+/* || FONT-IMPORT */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,200;1,14..32,200&family=Smythe&display=swap');
+
+/* font-family: "Smythe", system-ui; */
+/* font-family: "Inter", sans-serif; */
+
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+:root {
+    /* || BGCOLORS */
+    --BODY-BGCOLOR: #ddeae1;
+    --MAIN-BGCOLOR__ADD-BTN-BGCOLOR: #fff;
+    --COMPLETE-ORDER-BGCOLOR: #16DB99;
+    
+    
+    /* || TYPOGRAPHY COLORS */
+    --HEADER-TEXT-COLOR__ADD-BTN-TEXT_HOVER-COLOR: #fff;
+    --INGREDIENST-TEXT-COLOR: #8b8b8b;
+    --ADD-BTN-TEXT-COLOR: #3C3C3C;
+    --COMPLETE-ORDER-TEXT-COLOR: #fff;
+    --REMOVE-BTN-TEXT-COLOR: #BBB;
+
+    
+    /* || OTHER COLORS */
+    --ADD-BTN_HOVER-COLOR: #16DB99;
+    --SPLIT-LINE-COLOR: 1px solid #D2D2D2;
+    --ADD-BTN-BORDER: 2px solid #dedede;
+    --TOTAL-PRICE-SPLIT-LINE: 2px solid #393333;
+}
+
+body {
+    background-color: var(--BODY-BGCOLOR);
+    font-family: "Smythe", system-ui;
+    font-weight: 400;
+    padding: 10px;
+}
+
+/* || UTILITY CLASS */
+
+.app-centered {
+    width: 600px;
+    margin: auto;
+}
+
+header {
+    background-image: url("./images/ferks-guare-KEZdWfYD-ow-unsplash 1.png");
+    background-size: cover;
+    height: 167px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    row-gap: 9px;
+}
+
+.header-text {
+    color: var(--HEADER-TEXT-COLOR__ADD-BTN-TEXT_HOVER-COLOR);
+    font-weight: 400;
+    padding-left: 46px;
+}
+
+header h1 {
+    font-size: 2.4375rem;
+}
+
+header p {
+    font-size: 1.40125rem;
+}
+
+main {
+    background-color: var(--MAIN-BGCOLOR__ADD-BTN-BGCOLOR);
+    height: fit-content;
+    padding: 22px 0 53px 0;
+}
+
+.item-container {
+    display: flex;
+    margin: 0 46px;
+    padding: 45px 0;
+    border-bottom: var(--SPLIT-LINE-COLOR);
+}
+
+.ul-items {
+    list-style: none;
+    margin: auto auto auto 0;
+}
+
+.emoji {
+    font-size: 4.92rem;
+    padding: 0 30px 0 0;
+}
+
+.name, .ingredients {
+    padding: 0 0 8px 0;
+}
+
+.name{
+    font-size: 1.75rem;
+}
+
+.ingredients {
+    font-size: 1rem;
+    color: var(--INGREDIENST-TEXT-COLOR);
+}
+
+.price {
+    font-size: 1.25rem;
+}
+
+.add-btn {
+    font-family: "Inter", sans-serif;
+    font-weight: 200;
+    font-size: 2rem;
+    margin: auto 0 auto auto;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border: var(--ADD-BTN-BORDER);
+    background-color: var(--MAIN-BGCOLOR__ADD-BTN-BGCOLOR);
+    color: var(--ADD-BTN-TEXT-COLOR);
+    line-height: 24px;
+    transition: 0.1s;
+}
+
+.add-btn:hover, .add-btn:focus {
+    transition: 0.2s;
+    background-color: var(--ADD-BTN_HOVER-COLOR);
+    color: var(--HEADER-TEXT-COLOR__ADD-BTN-TEXT_HOVER-COLOR);
+    box-shadow: 0 0 1.5px #3C3C3C;
+    border: none;
+    cursor: pointer;
+}
+
+
+.order-section {
+    text-align: center;
+    width: 508px;
+    margin: 0 46px;
+    padding: 45px 0 0 0;
+}
+
+.order-heading {
+    font-weight: 400;
+    font-size: 1.75rem;
+    padding-bottom: 42px;
+}
+
+.order-item-container {
+    display: flex;
+    padding-top: 10px;
+}
+
+.ul-order-items {
+    list-style: none;
+}
+
+.order-name {
+    font-size: 1.75rem;
+    padding: 0 10px 0 0;
+}
+
+.order-price, .order-total-price {
+    font-size: 1.25rem;
+    margin: auto 0 auto auto;
+}
+
+.remove-btn {
+    font-size: 0.75rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--REMOVE-BTN-TEXT-COLOR);
+    background-color: transparent;
+    border: none;
+}
+
+.total-price-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 0 0;
+    padding: 14px 0 53px 0;
+    border-top: var(--TOTAL-PRICE-SPLIT-LINE);
+}
+
+.order-total-text {
+    font-weight: 400;
+    font-size: 1.75rem;
+}
+
+.complet-order-btn {
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    background-color: var(--COMPLETE-ORDER-BGCOLOR);
+    color: var(--COMPLETE-ORDER-TEXT-COLOR);
+    padding: 18px 175px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
