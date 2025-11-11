@@ -84,7 +84,11 @@ main {
     border-bottom: var(--SPLIT-LINE-COLOR);
 }
 
-.ul-items {
+/* .container {
+    
+} */
+
+.ul-list {
     list-style: none;
     margin: auto auto auto 0;
 }
@@ -146,12 +150,13 @@ main {
 .order-heading {
     font-weight: 400;
     font-size: 1.75rem;
-    padding-bottom: 42px;
+    padding-bottom: 54px;
 }
 
-.order-item-container {
+
+.container {
     display: flex;
-    padding-top: 10px;
+    padding: 10px 0 0 0;
 }
 
 .ul-order-items {
@@ -174,6 +179,7 @@ main {
     color: var(--REMOVE-BTN-TEXT-COLOR);
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .total-price-container {
@@ -189,7 +195,7 @@ main {
     font-size: 1.75rem;
 }
 
-.complet-order-btn {
+.complete-order-btn {
     width: 100%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 700;

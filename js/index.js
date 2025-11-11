@@ -8,7 +8,7 @@ let name =''
 
 document.addEventListener('click', (e) => {
     if(e.target.id === "add-btn"){
-        item(e.target.dataset.item)
+        item(e.target.dataset.menuItem)
     } else if(e.target.id === "remove-btn") {
         console.log(e.target.dataset)
         removeBtn(e.target.dataset.itemId)
@@ -132,13 +132,13 @@ function getRenderHtml() {
     return menuArray.map(item => {
         return `
         <div class="item-container" ${item.id}>
-        <p class="emoji">${item.emoji}</p>
-        <ul class="ul-items">
-        <li class="name">${item.name}</li>
-        <li class="ingredients">${item.ingredients.join(", ")}</li>
-        <li class="price">$${item.price}</li>
-        </ul>
-        <button class="add-btn" id="add-btn" data-item="${item.id}">+</button>
+            <p class="emoji">${item.emoji}</p>
+            <ul class="ul-items">
+                <li class="name">${item.name}</li>
+                <li class="ingredients">${item.ingredients.join(", ")}</li>
+                <li class="price">$${item.price}</li>
+            </ul>
+            <button class="add-btn" id="add-btn" data-menu-item="${item.id}">+</button>
         </div>
         `
     }).join("")
