@@ -5,7 +5,6 @@ document.addEventListener("click", function(e) {
         orderedItemPriceReturn(Number(e.target.dataset.menuItem))
     } else if(e.target.id === "remove-btn") {
         removebtn(Number(e.target.dataset.removeBtn))
-        //console.log(Number(e.target.dataset.removeBtn))
     }
 })
 
@@ -44,7 +43,6 @@ function orderedItemPriceReturn(itemId) {
         if (item.id === itemId) {
             orderArr.push(item)
             prices.push(item.price)
-            // console.log(orderArr)
         }
     })
     renderOrder()
@@ -79,7 +77,6 @@ function orderItemDisplay() {
 
 function totalPriceRender() {
     const totalPrice = prices.reduce((totalPrice, currentPrice) => totalPrice + currentPrice, 0)
-    // console.log(totalPrice)
     return `
         <h3 class="order-total-text">Total price:</h3>
         <p class="order-total-price">$${totalPrice}</p>
