@@ -24,15 +24,16 @@ function menu() {
 }
 
 function removebtn(containerId) {
-    console.log(containerId)
+    // console.log(containerId)
+    console.log(orderArr)
     orderArr.splice(containerId, 1)
-     if(orderArr.length <= 1) {
-         orderArr = []
-    //     document.getElementById("order-section").style.display = "none"
-    }
+    prices.splice(containerId, 1)
+    console.log(orderArr)
 
     document.getElementById(containerId).style.display = "none"
-    console.log(orderArr)
+    totalPriceRender()
+    
+    orderArr.length === 0 ? document.getElementById("order-section").style.display = "none" : renderOrder()
 }
 
 let orderArr = []
@@ -43,19 +44,16 @@ function orderedItemPriceReturn(itemId) {
         if (item.id === itemId) {
             orderArr.push(item)
             prices.push(item.price)
-            console.log(orderArr)
+            // console.log(orderArr)
         }
     })
-    orderDisplay()
+    renderOrder()
 }
 
-
-let yourOrder =''
-
-function orderDisplay() {
-    yourOrder = `
+function yourOrder() {
+    return `
     <section class="order-section" id="order-section">
-        <h2 class="order-heading">Your Order</h2>
+    <h2 class="order-heading">Your Order</h2>
         <div id="order-container">
         
         </div>
@@ -65,40 +63,36 @@ function orderDisplay() {
         <button class="complete-order-btn">Complete order</button>
     </section>
     `
+}
 
-    const order = orderArr.map((item, index) => `
+function orderItemDisplay() {
+    return orderArr.map((item, index) => `
         <div class="container" id="${index}">
-            <ul class="ul-order-items" id="ul-order-items">
-                <li class="order-name">${item.name}</li>
+        <ul class="ul-order-items" id="ul-order-items">
+        <li class="order-name">${item.name}</li>
             </ul>
             <button class="remove-btn" id="remove-btn" data-remove-btn="${index}">remove</button>
             <p class="order-price">$${item.price}</p>
-        </div>
-        `).join('')
-
-    // console.log(prices)
-
-    const totalPrice = prices.reduce((totalPrice, currentPrice) => totalPrice + currentPrice, 0)
-
-    function totalPriceRender() {
-        return `
-            <h3 class="order-total-text">Total price:</h3>
-            <p class="order-total-price">$${totalPrice}</p>
-        `
-    }
-
-    // console.log(totalPrice)
-    
-    
-    
-    document.getElementById("main").innerHTML = menu() + yourOrder
-    document.getElementById("order-container").innerHTML = order
-    document.getElementById("total-price-container").innerHTML = totalPriceRender() 
+            </div>
+            `).join('')
 }
 
+function totalPriceRender() {
+    const totalPrice = prices.reduce((totalPrice, currentPrice) => totalPrice + currentPrice, 0)
+    // console.log(totalPrice)
+    return `
+        <h3 class="order-total-text">Total price:</h3>
+        <p class="order-total-price">$${totalPrice}</p>
+        `
+}
+
+function renderOrder() {
+    document.getElementById("main").innerHTML = menu() + yourOrder()
+    document.getElementById("order-container").innerHTML = orderItemDisplay() 
+    document.getElementById("total-price-container").innerHTML = totalPriceRender()
+}
 
 function render() {
-    
     document.getElementById("main").innerHTML = menu()
 }
 
