@@ -15,10 +15,44 @@
 
              <!-- MENU ITEMS HERE -->
 
-
             <!-- YOUR ORDER MESSAGE HERE -->
 
     </main>
+
+    <!-- FORM MODULE POP-UP -->
+     
+        <form class="id" id="complete-module" data-form-id="complete-module">
+            <label for="fullName" class="inputs-label" data-form-id="complete-module">Enter card details</label>
+            <input
+            class="form-inputs input-fields" 
+            type="text" 
+            id="fullName"
+            data-form-id="complete-module" 
+            name="fullName" 
+            placeholder="Enter your name"
+            autocomplete="name"
+            pattern="[A-Za-z]{2,}" 
+            required>
+            <input
+            class="form-inputs input-fields" 
+            type="te"
+            id="cardNumber"
+            data-form-id="complete-module"  
+            name="cardNumber" 
+            placeholder="Enter card number"
+            pattern="[\d\s]{15,23}"
+            required>
+            <input
+            class="form-inputs input-fields" 
+            type="text"
+            id="cvvCode"
+            data-form-id="complete-module"  
+            name="cvvCode" 
+            placeholder="Enter CVV" 
+            pattern="\d{3,3}" 
+            required>
+            <button class="form-inputs pay-btn" type="submit" id="pay-btn" data-form-id="complete-module">Pay</button>
+        </form>
     <script type="module" src="./js/main.js"></script>
 </body>
 </html>

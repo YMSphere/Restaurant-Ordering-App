@@ -1,16 +1,32 @@
+// || IMPORTING MENU DATA
+
 import menuArray from './data.js'
+
+// || LISTENING FOR THE EVENTS
 
 document.addEventListener("click", function(e) {
     if(e.target.dataset.menuItem) {
         orderedItemPriceReturn(Number(e.target.dataset.menuItem))
     } else if(e.target.id === "remove-btn") {
         removebtn(Number(e.target.dataset.removeBtn))
-    }
+    } else if (e.target.id === "complete-order-btn") {
+        completeOrderBtn()
+    } else if(e.target.dataset.formId !== "complete-module") {
+        document.getElementById("complete-module").style.display = "none"
+    } 
 })
+
+document.addEventListener("submit", function(e) {
+    e.preventDefault()
+    orderCompletedMessage()
+})
+
+// || MENU
+
 
 function menu() {
    return menuArray.map(item => `
-    <section class="item-container" id="${item.id}">
+    <section class="menu-item-container" id="${item.id}">
         <p class="emoji">${item.emoji}</p>
         <ul class="ul-list">
             <li class="name">${item.name}</li>
@@ -22,18 +38,7 @@ function menu() {
     `).join('')
 }
 
-function removebtn(containerId) {
-    // console.log(containerId)
-    console.log(orderArr)
-    orderArr.splice(containerId, 1)
-    prices.splice(containerId, 1)
-    console.log(orderArr)
-
-    document.getElementById(containerId).style.display = "none"
-    totalPriceRender()
-    
-    orderArr.length === 0 ? document.getElementById("order-section").style.display = "none" : renderOrder()
-}
+// || YOUR ORDER
 
 let orderArr = []
 let prices = []
@@ -58,21 +63,21 @@ function yourOrder() {
         <div class="total-price-container" id="total-price-container">
 
         </div>
-        <button class="complete-order-btn">Complete order</button>
+        <button class="complete-order-btn" id="complete-order-btn">Complete order</button>
     </section>
     `
 }
 
 function orderItemDisplay() {
     return orderArr.map((item, index) => `
-        <div class="container" id="${index}">
+    <div class="ordered-item-container" id="${index}">
         <ul class="ul-order-items" id="ul-order-items">
-        <li class="order-name">${item.name}</li>
-            </ul>
-            <button class="remove-btn" id="remove-btn" data-remove-btn="${index}">remove</button>
-            <p class="order-price">$${item.price}</p>
-            </div>
-            `).join('')
+            <li class="order-name">${item.name}</li>
+        </ul>
+        <button class="remove-btn" id="remove-btn" data-remove-btn="${index}">remove</button>
+        <p class="order-price">$${item.price}</p>
+    </div>
+    `).join('')
 }
 
 function totalPriceRender() {
@@ -81,6 +86,41 @@ function totalPriceRender() {
         <h3 class="order-total-text">Total price:</h3>
         <p class="order-total-price">$${totalPrice}</p>
         `
+}
+
+function removebtn(containerId) {
+    orderArr.splice(containerId, 1)
+    prices.splice(containerId, 1)
+
+    document.getElementById(containerId).style.display = "none"
+    totalPriceRender()
+    
+    orderArr.length === 0 ? document.getElementById("order-section").style.display = "none" : renderOrder()
+}
+
+// || COMPLETED ORDER
+
+function orderCompletedMessage() {
+    document.getElementById("complete-module").style.display = "none"
+    const custemerName = document.getElementById('fullName').value
+
+    const message = `
+    <div class="message-container">
+        <p>Thanks, ${custemerName}! Your order is on its way!</p>
+    </div>
+    `
+    
+    renderCompletedMessage(message)
+}
+
+function completeOrderBtn() {
+    document.getElementById("complete-module").style.display = "flex"
+}
+
+// || RENDER
+
+function renderCompletedMessage(message) {
+    document.getElementById("main").innerHTML = menu() + message
 }
 
 function renderOrder() {

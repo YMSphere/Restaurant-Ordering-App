@@ -12,25 +12,94 @@
 }
 
 :root {
-    /* || BGCOLORS */
+    /* BODY BGCOLOR */
     --BODY-BGCOLOR: #ddeae1;
-    --MAIN-BGCOLOR__ADD-BTN-BGCOLOR: #fff;
-    --COMPLETE-ORDER-BGCOLOR: #16DB99;
-    
-    
-    /* || TYPOGRAPHY COLORS */
-    --HEADER-TEXT-COLOR__ADD-BTN-TEXT_HOVER-COLOR: #fff;
-    --INGREDIENST-TEXT-COLOR: #8b8b8b;
-    --ADD-BTN-TEXT-COLOR: #3C3C3C;
-    --COMPLETE-ORDER-TEXT-COLOR: #fff;
-    --REMOVE-BTN-TEXT-COLOR: #BBB;
 
+
+    /* BGCOLORS */
+    --MAIN-BG: #fff;
+    --MESSAGE-BG: #ECFDF5; 
+    --INPUT-FIELDS-MODULE-BG: #fff;
+
+
+    /* BTNS BGCOLORS */
+    --ADD-BTN-BG: #fff;
+    --REMOVE-BTN-BG: transparent;
+    --OTHERS-BTN-BG: #16DB99;
+
+
+    /* HOVER COLOR */
+    --REMOVE-BTN-HOV-TXT: #666666;
+    --ADD-BTN-HOV-TXT: #fff;
+    --INPUT-PLACEHOLDER-TXT-HOV: #fff;
+    --INPUT-TXT: #fff;
+    /* HOVER BGCOLORS */
+    --OTHER-BTNS-BGHOV: #065F46;
+    --ADD-BTNS-BGHOV: #065F46;
+    --INPUT-FIELDS-MODULE-BG-HOV: #1F2937; 
+    /* HOVER BORDER */
+    --INPUT-FIELDS-MODULE-BORDER-HOV: 3px solid #999999;      
     
-    /* || OTHER COLORS */
-    --ADD-BTN_HOVER-COLOR: #16DB99;
+    
+    /* TEXT-COLORS */
+    --HEADER-TXT: #fff;
+    --GENERAL-TXT: #000;
+    --INGREDIENTS-TXT: #8b8b8b;
+    --REMOVE-BTN-TXT: #BBB;
+    --ADD-BTN-TXT: #3C3C3C;
+    --OTHERS-BTN-TXT: #fff;
+    --MESSAGE-TXT: #065F46;
+    --INPUT-PLACEHOLDER-TXT: #757575;
+    
+    
+    /* SHADOWS && BORDERS && SPLIT LINES */
     --SPLIT-LINE-COLOR: 1px solid #D2D2D2;
     --ADD-BTN-BORDER: 2px solid #dedede;
+    --ADD-BTN-HOV-SHADOW: none;
     --TOTAL-PRICE-SPLIT-LINE: 2px solid #393333;
+    --FORM-MODULE-SHADOW: 5.19px 5.19px 255.44px 0px hsla(0, 0%, 0%, 0.502);
+    --INPUT-FIELDS-MODULE-BORDER: 1.6px solid #757575;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* BODY BGCOLOR */
+        --BODY-BGCOLOR: #1C1C1C;
+
+
+        /* BGCOLORS */
+        --MAIN-BG: #1F2937;
+        --MESSAGE-BG: #065F46; 
+        
+
+        /* BTNS BGCOLORS */
+        --ADD-BTN-BG: #1c2431;
+        --OTHERS-BTN-BG: #16DB99;
+        --INPUT-FIELDS-MODULE-BG: #1C1C1C;
+        
+        
+        /* HOVER COLOR */
+        --REMOVE-BTN-HOV-TXT: hsl(0, 0%, 90%);
+        /* HOVER BGCOLORS */
+        --OTHER-BTNS-BGHOV: #065F46;
+        --ADD-BTNS-BGHOV: #16DB99;
+        --INPUT-FIELDS-MODULE-BG-HOV: hsl(215, 28%, 40%);
+        /* HOVER BORDER */
+        --INPUT-FIELDS-MODULE-BORDER-HOV: 3px solid #fff;
+
+
+        /* TEXT-COLORS */
+        --GENERAL-TXT: #fff;
+        --INGREDIENTS-TXT: hsl(0, 0%, 70%);
+        --ADD-BTN-TXT: #dedede;
+        --INPUT-PLACEHOLDER-TXT: #fff;
+        --MESSAGE-TXT: #ECFDF5;
+
+        
+        /* SHADOWS && BORDERS && SPLIT LINES */
+        --ADD-BTN-HOV-SHADOW: 0.5px 0.5px 0px #1F2937;
+        --INPUT-FIELDS-MODULE-BORDER: 1.6px solid hsl(0, 0%, 85%);
+    }
 }
 
 body {
@@ -47,6 +116,43 @@ body {
     margin: auto;
 }
 
+/* || HOVERED */
+
+.add-btn:hover, .add-btn:focus {
+    transition: 0.2s;
+    background-color: var(--ADD-BTNS-BGHOV);
+    color: var(--ADD-BTN-HOV-TXT);
+    border: none;
+    cursor: pointer;
+    text-shadow: var(--ADD-BTN-HOV-SHADOW);
+}
+
+.remove-btn:hover, .remove-btn:focus {
+    color: var(--REMOVE-BTN-HOV-TXT);
+    transform: scale(1.1);
+}
+
+:is(.complete-order-btn, .pay-btn):hover, 
+:is(.complete-order-btn, .pay-btn):focus {
+    background-color: var(--OTHER-BTNS-BGHOV);
+    transition: 0.25s;
+}
+
+.input-fields:focus {
+    background-color: var(--INPUT-FIELDS-MODULE-BG-HOV);
+    border: var(--INPUT-FIELDS-MODULE-BORDER-HOV);
+    transform: scale(1.03);
+    transition: 0.3s;
+    color: var(--INPUT-TXT);
+    outline: #999999;
+}
+
+.input-fields:focus::-webkit-input-placeholder {
+    color: var(--INPUT-PLACEHOLDER-TXT-HOV);
+}
+
+/* || HEADER */
+
 header {
     background-image: url("./images/ferks-guare-KEZdWfYD-ow-unsplash 1.png");
     background-size: cover;
@@ -58,7 +164,7 @@ header {
 }
 
 .header-text {
-    color: var(--HEADER-TEXT-COLOR__ADD-BTN-TEXT_HOVER-COLOR);
+    color: var(--HEADER-TXT);
     font-weight: 400;
     padding-left: 46px;
 }
@@ -71,22 +177,23 @@ header p {
     font-size: 1.40125rem;
 }
 
+/* || MAIN */
+
 main {
-    background-color: var(--MAIN-BGCOLOR__ADD-BTN-BGCOLOR);
+    background-color: var(--MAIN-BG);
     height: fit-content;
     padding: 22px 0 53px 0;
+    position: relative;
 }
 
-.item-container {
+/* || MENU */
+
+.menu-item-container {
     display: flex;
     margin: 0 46px;
     padding: 45px 0;
     border-bottom: var(--SPLIT-LINE-COLOR);
 }
-
-/* .container {
-    
-} */
 
 .ul-list {
     list-style: none;
@@ -108,7 +215,11 @@ main {
 
 .ingredients {
     font-size: 1rem;
-    color: var(--INGREDIENST-TEXT-COLOR);
+    color: var(--INGREDIENTS-TXT);
+}
+
+.name, .price {
+    color: var(--GENERAL-TXT);
 }
 
 .price {
@@ -124,21 +235,13 @@ main {
     width: 50px;
     border-radius: 100%;
     border: var(--ADD-BTN-BORDER);
-    background-color: var(--MAIN-BGCOLOR__ADD-BTN-BGCOLOR);
-    color: var(--ADD-BTN-TEXT-COLOR);
+    background-color: var(--ADD-BTN-BG);
+    color: var(--ADD-BTN-TXT);
     line-height: 24px;
     transition: 0.1s;
 }
 
-.add-btn:hover, .add-btn:focus {
-    transition: 0.2s;
-    background-color: var(--ADD-BTN_HOVER-COLOR);
-    color: var(--HEADER-TEXT-COLOR__ADD-BTN-TEXT_HOVER-COLOR);
-    box-shadow: 0 0 1.5px #3C3C3C;
-    border: none;
-    cursor: pointer;
-}
-
+/* || YOUR ORDER */
 
 .order-section {
     text-align: center;
@@ -151,16 +254,18 @@ main {
     font-weight: 400;
     font-size: 1.75rem;
     padding-bottom: 54px;
+    color: var(--GENERAL-TXT);
 }
 
 
-.container {
+.ordered-item-container {
     display: flex;
     padding: 10px 0 0 0;
 }
 
 .ul-order-items {
     list-style: none;
+    color: var(--GENERAL-TXT);
 }
 
 .order-name {
@@ -171,12 +276,13 @@ main {
 .order-price, .order-total-price {
     font-size: 1.25rem;
     margin: auto 0 auto auto;
+    color: var(--GENERAL-TXT);
 }
 
 .remove-btn {
     font-size: 0.75rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: var(--REMOVE-BTN-TEXT-COLOR);
+    color: var(--REMOVE-BTN-TXT);
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -193,16 +299,89 @@ main {
 .order-total-text {
     font-weight: 400;
     font-size: 1.75rem;
+    color: var(--GENERAL-TXT);
 }
 
 .complete-order-btn {
     width: 100%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 700;
-    background-color: var(--COMPLETE-ORDER-BGCOLOR);
-    color: var(--COMPLETE-ORDER-TEXT-COLOR);
+    background-color: var(--OTHERS-BTN-BG);
+    color: var(--OTHERS-BTN-TXT);
     padding: 18px 175px;
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+/* || COMPLETED MODULE FORM */
+
+form {
+    width: 524px;
+    height: 525px;
+    padding: 24px;
+    display: none;
+    flex-flow: column nowrap;
+    row-gap: 23px;
+    background-color: var(--MAIN-BG);
+    text-align: center;
+    box-shadow: var(--FORM-MODULE-SHADOW);
+    border-radius: 4px;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.inputs-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 23px;
+    color: var(--GENERAL-TXT);
+}
+
+.form-inputs {
+    height: 71px;
+    font-family: inherit;
+}
+
+.input-fields {
+    padding: 0 0 0 26.5px;
+    border: var(--INPUT-FIELDS-MODULE-BORDER);
+    border-radius: 4px;
+    color: var(--GENERAL-TXT);
+    background-color: var(--INPUT-FIELDS-MODULE-BG);
+    transition: 0.2s;
+}
+
+.input-fields::-webkit-input-placeholder {
+    font-size: 1.25rem;
+    color: var(--INPUT-PLACEHOLDER-TXT);
+}
+
+.pay-btn {
+    margin: 23px 0 0 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--OTHERS-BTN-BG);
+    color: var(--OTHERS-BTN-TXT);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* || ORDER COMPELTED MESSAGE */
+
+.message-container {
+    text-align: center;
+    font-size: 2rem;
+    padding: 52px 64px;
+    margin: 45px 46px 0 46px;
+    background-color: var(--MESSAGE-BG);
+    color: var(--MESSAGE-TXT);
 }
